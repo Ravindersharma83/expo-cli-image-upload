@@ -1,0 +1,35 @@
+** Image Upload to firebase storage using react native expo cli **
+
+1- Create a web app in firebase , enable storage and it's permission to true
+2- For Implementing Tailwind css 
+    - npm install nativewind
+    - npm install --dev tailwindcss
+    - npx tailwindcss init
+    - Add this line in tailwind.config.js (content: ["./App.{js,jsx,ts,tsx}", "./screens/**/*.{js,jsx,ts,tsx}"],)
+    - Add this line in babel.config.js (plugins: ["nativewind/babel"],)
+    - After that restart the app and serve
+
+3- Setting up expo image picker
+    - npm install expo-image-picker
+    - paster this code in app.json
+        "plugins": [
+            [
+                "expo-image-picker",
+                {
+                "photosPermission": "The app accesses your photos to let you share them with your friends."
+                }
+            ]
+        ]
+
+4- Setting up firebase
+    - npm install firebase
+    - setting up firebase.config file
+    - run this to create metro.config.js (npx expo customize metro.config.js)
+    - metro.config.js file look like this:-
+
+        const { getDefaultConfig } = require('@expo/metro-config');
+        const defaultConfig = getDefaultConfig(__dirname);
+        defaultConfig.resolver.assetExts.push('cjs');
+        module.exports = defaultConfig;
+
+7- Write to code to uploadImage in app.js file
